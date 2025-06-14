@@ -155,7 +155,7 @@
           overflow-y: auto;
           display: flex;
           flex-direction: column;
-          gap: 1.2rem;
+          /* gap: 1.2rem; */
           /* border-left: 1px solid #eee; */
           box-shadow: -2px 0 8px rgba(0, 0, 0, 0.03);
         }
@@ -169,7 +169,7 @@
         .muted {
           color: #888;
           font-size: 0.9rem;
-          margin-top: -0.5rem;
+          margin-top: 0.5rem;
         }
 
         .section-title {
