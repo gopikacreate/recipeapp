@@ -12,14 +12,15 @@ import {
 import { FaEdit, FaTrash, FaPlus } from "react-icons/fa";
 import Link from "next/link";
 import { useRef } from "react";
-
+import { useRouter } from "next/router";
 
 export default function Home() {
   /* ------------ state ------------ */
   const [recipes, setRecipes] = useState([]);
   const [selected, setSelected] = useState(null); // view mode
   const [isEditing, setIsEditing] = useState(false); // switches to edit pane
-const detailRef = useRef(null);
+  const detailRef = useRef(null);
+  const router = useRouter();
 
   /* -- new fields + existing fields -- */
   const [name, setName] = useState("");
@@ -109,8 +110,8 @@ const detailRef = useRef(null);
     setIngredients((recipe.ingredients || []).join("\n"));
     setSteps((recipe.steps || []).join("\n"));
     if (window.innerWidth <= 900 && detailRef.current) {
-    detailRef.current.scrollIntoView({ behavior: "smooth" });
-  }
+      detailRef.current.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   /* ---------- search filter ---------- */
@@ -125,16 +126,15 @@ const detailRef = useRef(null);
   });
   const [menuOpen, setMenuOpen] = useState(false);
   /* =================================================================== */
-  console.log("menuOpen",menuOpen)
+  console.log("menuOpen", menuOpen);
   return (
     <div className="app">
       {/* mobile menu button */}
-     {!menuOpen && (
-  <div className="menu-toggle" onClick={() => setMenuOpen(true)}>
-    ☰
-  </div>
-)}
-
+      {!menuOpen && (
+        <div className="menu-toggle" onClick={() => setMenuOpen(true)}>
+          ☰
+        </div>
+      )}
 
       {/* ------------- sidebar ------------- */}
       <div className={`sidebar ${menuOpen ? "open" : ""}`}>
@@ -157,14 +157,22 @@ const detailRef = useRef(null);
               onClick={() => {
                 setFilter(cat);
                 setSelected(null);
-                 setMenuOpen(false);
+                setMenuOpen(false);
               }}
             >
               {cat}
             </li>
           ))}
+          <li>
+            <div
+              className="sidebar-item"
+              onClick={() => router.push("/planner")}
+              style={{ cursor: "pointer" }}
+            >
+              Weekly Meal Plan
+            </div>
+          </li>
         </ul>
-       
       </div>
 
       {/* ------------- list pane ------------- */}
@@ -208,8 +216,8 @@ const detailRef = useRef(null);
             <h2>{selected.name}</h2>
             <p className="muted">{selected.category}</p>
 
-            <div className="section-title">Description</div>
-            <p className="pre">{selected.description}</p>
+            {/* <div className="section-title">Description</div>
+            <p className="pre">{selected.description}</p> */}
 
             <div className="section-title">Ingredients</div>
             <ul>
@@ -271,11 +279,11 @@ const detailRef = useRef(null);
                 <option key={c}>{c}</option>
               ))}
             </select>
-            <textarea
+            {/* <textarea
               placeholder="Short description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-            />
+            /> */}
 
             <textarea
               placeholder="Ingredients (one per line)"
@@ -304,8 +312,6 @@ const detailRef = useRef(null);
           </form>
         )}
       </section>
-
-     
     </div>
   );
 }

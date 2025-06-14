@@ -19,6 +19,18 @@
   .sidebar {
     grid-area: sidebar;
   }
+.sidebarlink {
+  color: inherit;              /* Same as regular text */
+  text-decoration: none;       /* Remove underline */
+  display: block;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.sidebar a:hover {
+  background: #eaeaea;         /* Optional hover like others */
+}
 
   .list-pane {
     grid-area: list;
