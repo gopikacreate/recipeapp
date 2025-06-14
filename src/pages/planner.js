@@ -439,6 +439,7 @@ useEffect(() => {
           border-radius: 10px;
           font-weight: 600;
           cursor: pointer;
+           color: black;
         }
         .grocery-box {
           background: #fff3d9;

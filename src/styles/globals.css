@@ -144,7 +144,7 @@
         /* detail pane */
         .detail-pane {
           border-radius: 14px;
-          margin-left: 60px;
+          margin-left: 29px;
           margin-right: 24px;
            padding-left: 23px;
           padding-top: 15px;
@@ -292,7 +292,8 @@
   .menu-toggle {
     display: block;
     position: fixed;
-    top: 1rem;
+    /* top: 1rem; */
+       top: 13px;
     left: 1rem;
     z-index: 1000;
     background: #ffd86b;
