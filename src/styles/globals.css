@@ -114,6 +114,7 @@
           border-radius: 10px;
           padding: 0 0.9rem;
           cursor: pointer;
+          color: black;
         }
         .note-list {
           list-style: none;
